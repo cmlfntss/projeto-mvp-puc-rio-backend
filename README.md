@@ -22,8 +22,8 @@ REQUISITOS:
 
 Realizar a instalação das libs python listadas no requirements.txt.
 É recomendado o uso de ambientes virtuais do tipo virtualenv.
-1 - Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo:
 
+1 - Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo:
 cd projeto-mvp-puc-rio-backend.git
 
 2 - Instalar Virtualenv
