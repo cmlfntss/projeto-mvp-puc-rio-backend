@@ -1,7 +1,17 @@
 from flask import Flask, render_template, request, url_for, redirect
 from database import get_database, connect_to_database
+from flask_restplus import Api, Resource, fields
 
 app = Flask (__name__, template_folder='../frontend/templates')
+api = Api(app, version='1.0', title='API de Tarefas', description='API para gerenciar tarefas')
+
+ns = api.namespace('tarefas', description='Operações relacionadas a tarefas')
+
+# Defina um modelo para sua tarefa
+modelo_tarefa = api.model('Tarefa', {
+    'tarefasdiarias': fields.String(required=True, description='A tarefa a ser realizada.')
+})
+
 
 
 @app.route('/', methods=["POST", "GET"])
