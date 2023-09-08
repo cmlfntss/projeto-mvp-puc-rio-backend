@@ -47,3 +47,14 @@ Em caso de modificações no código enquanto a API estiver rodando, utilizar o 
 
 (venv)$ flask run --host 0.0.0.0 --port 5000 --reload
 Após seguir todos os passos, abrir o link abaixo no bavegador para verificar o status da API em execução
+
+8 - Acesse a API em seu navegador:
+
+http://127.0.0.1:5000/
+
+Documentação Swagger
+A documentação Swagger da API pode ser acessada em:
+
+http://127.0.0.1:5000/api/spec
+
+Lá você encontrará detalhes sobre os endpoints disponíveis, parâmetros e exemplos de uso da API.
