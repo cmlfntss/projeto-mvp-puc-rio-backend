@@ -1,26 +1,27 @@
 from flask import Flask, render_template, request, url_for, redirect
 from database import get_database, connect_to_database
 
-app = Flask (__name__, template_folder='../frontend/templates')
+# app = app = Flask (__name__, template_folder='../frontend-puc/templates')
+
+app = Flask(__name__, template_folder='../frontend-puc/templates')
 
 
-@app.route('/', methods=["POST", "GET"])
+
+@app.route('/', methods = ["POST", "GET"])
 def index():
     db = get_database()
-    tarefas_cursor = db.execute("select * from lista")
+    task_cursor = db.execute("select * from listadetarefas")
+   
+    todasastarefas = task_cursor.fetchall()
 
-    todastarefas = tarefas_cursor.fetchall()
+    return render_template("index.html", todasastarefas = todasastarefas)
 
-    return render_template("index.html", todastarefas = todastarefas)
-
-
-@app.route('/inserirtarefa', methods=["POST", "GET"])
-def inserirtarefa():
+@app.route('/inserirtarefas', methods=["POST", "GET"])
+def inserirtarefas():
     if request.method == "POST":
-        # obtem a tarefa inserida pelo usuário no formulário.
-        enteredtask = request.form['tarefasdiarias']
+        enteredtask = request.form['tarefadehoje']  
         db = get_database()
-        db.execute("insert into lista ( tarefas) values (?)", [enteredtask])
+        db.execute("insert into listadetarefas ( tarefa) values (?);", [enteredtask])
         db.commit()
         return redirect(url_for("index"))
     return render_template("index.html")
@@ -33,32 +34,32 @@ def editartarefa(id):
     if request.method == "POST":
         # Obtenha a tarefa editada do formulário.
         edited_task = request.form['edited_task']
+        task_id = request.form['task_id']
 
-        # Atualize a tarefa no banco de dados.
-        cursor.execute("UPDATE lista SET tarefas = ? WHERE id = ?", (edited_task, id))
+        # Atualize a tarefa no banco de dados com base no task_id.
+        cursor.execute("UPDATE listadetarefas SET tarefa = ? WHERE id = ?", (edited_task, task_id))
         db.commit()
-
         return redirect(url_for("index"))
 
     # Se o método for GET, exiba o formulário de edição.
-    cursor.execute("SELECT tarefas FROM lista WHERE id = ?", (id,))
+    cursor.execute("SELECT tarefa FROM listadetarefas WHERE id = ?", (id,))
     task = cursor.fetchone()
     db.close()
 
     if task:
-        return render_template("editartarefa.html", task=task[0])
+        return render_template("editartarefa.html", task=task[0], task_id=id)
     else:
         # Lida com o caso em que o ID da tarefa não existe.
         return "Tarefa não encontrada", 404
-
-@app.route("/deletartarefa/<int:id>", methods=["POST", "GET"])
-def deletartarefa(id):
+    
+@app.route("/deletartarefas/<int:id>", methods = ["POST", "GET"])
+def deletartarefas(id):
     if request.method == "GET":
         db = get_database()
-        db.execute("delete from lista where id = ?", [id])
+        db.execute("delete from listadetarefas where id =  (?);", [id])
         db.commit()
         return redirect(url_for("index"))
     return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug = True)

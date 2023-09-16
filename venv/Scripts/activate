@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\camil\OneDrive\Área de Trabalho\workspace\backend\venv"
+VIRTUAL_ENV="C:\Users\camil\OneDrive\Área de Trabalho\espaco-de-trabalho\backend-puc\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
