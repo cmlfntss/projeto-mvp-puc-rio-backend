@@ -55,6 +55,6 @@ http://127.0.0.1:5000/
 Documentação Swagger
 A documentação Swagger da API pode ser acessada em:
 
-http://127.0.0.1:5000/api/spec
+http://127.0.0.1:5000/api/swagger/
 
 Lá você encontrará detalhes sobre os endpoints disponíveis, parâmetros e exemplos de uso da API.
