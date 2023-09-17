@@ -57,4 +57,4 @@ A documentação Swagger da API pode ser acessada em:
 
 http://127.0.0.1:5000/api/swagger/
 
-Lá você encontrará detalhes sobre os endpoints disponíveis, parâmetros e exemplos de uso da API.
+Link do vídeo postado no [YouTube](https://youtu.be/sF8-KFsaOOc)
