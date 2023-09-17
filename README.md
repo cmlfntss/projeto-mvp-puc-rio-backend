@@ -57,4 +57,5 @@ A documentação Swagger da API pode ser acessada em:
 
 http://127.0.0.1:5000/api/swagger/
 
+## Vídeo do projeto no YT:
 Link do vídeo postado no [YouTube](https://youtu.be/sF8-KFsaOOc)
